@@ -1,12 +1,18 @@
 import './ListaSuspensa.css'
 
 export const ListaSuspensa = (props) => {
-    console.log(props.itens)
+
+    const aoSelecionado = (event) =>
+    {
+        props.aoAlterado(event.target.value);
+        console.log(event.target.value);
+    }
+
     return (
         <div className='lista-suspensa'>
             <label>
                 {props.label}
-                <select required={props.required}>
+                <select onChange={aoSelecionado} required={props.required}>
                     {props.itens.map(item => {
                         return <option key={item}>{item}</option>
                     })}
